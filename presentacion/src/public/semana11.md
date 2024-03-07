@@ -9,89 +9,133 @@
 
 ---
 
-# Test Driven Development
+# Tipos de datos
 
-
-![ciclo TDD](./img/ciclo_TDD.jpg )<!-- .element style="margin-left: auto; margin-right: auto; display: block; height: 500px;" -->
-
-- Se trata de cambiar la forma en la que construimos los programas:
-
-
-  1) Primero, nos paramos a pensar qué tiene que hacer
-  2) Construimos una prueba para comprobar que nuestro programa funciona
-  3) Modificamos el programa para que quede mejor (refactorizar)
+- En los ordenadores, sólo tenemos unos y ceros
+- El significado de los unos y los ceros se lo damos nosotros
+- Ejemplo: ¿cómo representaríais una frase? ¿y una imágen?
 
 ---
 
-# Ejemplo de TDD
+# Tipos de datos en python
 
-##### Función que sume dos números
+Tipos simples:
+  - None:	`NoneType`
+  - Texto:	`str` (*Here There Be Dragons*)
+  - Numericos:	`int`, `float`, `complex`
+  - Booleanos: `bool`
 
-Cómo podría ser una prueba:
+Tipos compuestos (tienen más de un valor):
+- Secuencia:	`list`, `tuple`, `range`
+- Diccionario:	`dict`
+- Conjunto:	`set`, `frozenset`
+- Binarios:	`bytes`, `bytearray`, `memoryview` (*Here There Be Dragons*)
 
-```python
-nombre = "suma de positivos"
-res = suma(1,2)
-expected = 3
+Se puede consultar el tipo de una variable con `type(variable)`, aunque no suele ser necesario
+---
 
-if(res != expected):
-    print(f'Test {nombre} fallido')
-```
+# Tipos numéricos
 
-- ¡¡No escribas ni el nombre de la función sin una prueba!!
-- Las primeras pruebas se pueden contestar con chorradas
-- Define qué es lo que realmente va a hacer la función
+- `int`:
+  - No tiene límite
+  - Se pueden usar números hexadecimales y octales: `0x2a`, `0o52`
+- `float`:
+  - Usa 64 bits
+  - Tiene ~ 16 digitos de precisión.
+  - De `1.7*10^(-308)` hasta `1.7*10^(308)` (se calcula que hay unos 10^82 átomos en el universo)
+  - Tiene +∞ y -∞ (`float("inf")`, `float("-inf")`)
+- `complex`:
+  - `5+7j`
+  - Parte real e imaginaria: `x.real`, `x.imag`
+  - Se pueden multiplicar, dividir...
+
+¿Cómo representaríais una cantidad monetaria?
 
 ---
 
-# Ventajas TDD
+# Tipos Booleanos
 
-
-- Mejora la calidad del código (puedo "apañarlo" todo lo que quiero sin romperlo)
-- Ayuda a diseñar la aplicación (te enfrentas antes a los problemas)
-- Aumenta la productividad (pasas más tiempo programando y menos depurando)
-
-<br>
-
-Pero:
-- No siempre es útil, sobre todo cuando estás haciendo pruebas de concepto
+- Por defecto todo es `True`
+- Excepto:
+  - `False`
+  - Ceros (`0`, `0.0`, `0j`)
+  - `None`
+  - Listas vacías `[]`
+  - Tuplas vacías `()`
+  - Diccionarios vacíos `{}`
+  - Conjuntos vaćios `()`
+  - Cadenas vacías `""`
+  - Rangos vacíos `range(0)`
+- `True` vale `1`, `False` `0`. **Usar con cuidado**
 
 ---
 
-# Librerías de testing
+# Operadores booleanos
 
-- `unittest` está integrada en Python
+- Se aplican los operadores `and`, `not`, `or`
+- Una comparación devuelve booleano (`3 > 5` => `False`, `2+1 == 3` => `True`)
+- Las comparaciones se pueden encadenar: `1 > 2 > 3` ==> `(1 > 2) and (2 > 3)`
 
-Ejemplo unittest:
+
+Expresión que devuelva `True` si son los dos mayor de edad y el hombre no es mayor que la mujer, o bien si están los dos jubilados.
 ```python
-class TestSuma(unittest.TestCase):
-
-    def test_suma_de_positivos(self):
-        res = suma(1,2)
-        expected = 3
-        self.assertEqual(res, expected)
+edad_hombre = ...
+edad_mujer = ...
+<expresión aquí>
 ```
-- `pytest` es de las más utilizadas
+---
 
-Ejemplo Pytest:
+# Custom truthy y falsy
+
+- Puedes decidir cuando quieres que tus clases sean `True` o `False` con dos métodos:
+  - `__bool__`
+  - `__len__`: si devuelve 0, es False
+
 ```python
-def test_suma_de_positivos():
-    res = suma(1,2)
-    expected = 3
-    assert res == expected
+class Account:
+	def __init__(self, balance):
+		self.balance = balance
+
+	def __bool__(self):
+		return self.balance > 0
 ```
 
 
-Notes:
-python -m venv .venv
-source .venv/bin/activate
-python -m unittest ./suma_dos_numeros_unittest.py
-pip install pytest
-pytest
+
+---
+
+# Listas
+
+- Literales de listas
+- Acceso a listas
+- Métodos de listas
+- List comprehension
 
 
-from {file name} import {function name}
-from {directory name}.{file name} import {function name} // Subdirectorios
+---
+
+# Rangos
+
+
+---
+
+# Tuplas
+
+https://realpython.com/python-tuple/
+fixed and unchangeable series of values
+puede contener múltiples tipos
+cero index
+
+
+
+
+
+---
+
+
+# Diccionarios
+
+
 
 ---
 
