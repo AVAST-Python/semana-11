@@ -32,6 +32,8 @@ Tipos compuestos (tienen más de un valor):
 - Binarios:	`bytes`, `bytearray`, `memoryview` (*Here There Be Dragons*)
 
 Se puede consultar el tipo de una variable con `type(variable)`, aunque no suele ser necesario
+
+Se puede pasar de un tipo a otro con str(), int(), float(), etc.
 ---
 
 # Tipos numéricos
@@ -100,42 +102,54 @@ class Account:
 		return self.balance > 0
 ```
 
-
-
 ---
 
 # Listas
 
+Se pueden crear de tres formas:
 - Literales de listas
-- Acceso a listas
-- Métodos de listas
-- List comprehension
-
-
----
-
-# Rangos
-
+- `list()` con un iterable
+- List comprehension:
+  - `[expression(item) for item in iterable]`
+  - `even_numbers = [num for num in range(1, 10) if num % 2 == 0 ]`
+  - `multiplication = [[i * j for j in range(1, 6)] for i in range(2, 5)]`
+- Métodos de listas: https://www.w3schools.com/python/python_ref_list.asp
 
 ---
 
-# Tuplas
+# Operaciones comunes en secuencias
 
-https://realpython.com/python-tuple/
-fixed and unchangeable series of values
-puede contener múltiples tipos
-cero index
+No hay que sabérselas, pero hay que saber que están.
 
+Valen para listas, cadenas, tuplas:
 
+- `x in s`
+- `x not in s`
+- `s + t`
+- `s * n`
+- `s[i]`
+- `s[i:j]`
+- `s[i:j:k]`
+- `len(s)`
+- `min(s)`
+- `max(s)`
+- `s.index(x[, i[, j]])`
+- `s.count(x)`
 
+Se admiten índices negativos, empiezan desde el final: `[1,2,3][-1] => 3`
 
+Ejercicio: usando índices, obtén el culo de estas cadenas: "pedúnculo", "músculo", "culombio"
 
 ---
 
+# Ordenamiento pseudoalfabético
 
-# Diccionarios
+> He preparado un programa que ordena los números del 1 al 100 en orden alfabético
+> es decir: primero los que empiezan por 1, luego por 2, etc. Los que empiezan
+> por el mismo dígito los reordena por el dígito que viene a continuación. Así,
+> los números quedarían: 1, 10, 100, 11, 12...
 
-
+¿En qué números coincide el orden numérico con el alfabético?
 
 ---
 
@@ -151,15 +165,4 @@ Devuelve `True` si eres mejor, si no, `False`.
 <div></div> <!-- .element style="height: 200px" -->
 
 [Enlace Kata](https://www.codewars.com/kata/5601409514fc93442500010b)
-
----
-
-# Ordenamiento pseudoalfabético
-
-> He preparado un programa que ordena los números del 1 al 100 en orden alfabético
-> es decir: primero los que empiezan por 1, luego por 2, etc. Los que empiezan
-> por el mismo dígito los reordena por el dígito que viene a continuación. Así,
-> los números quedarían: 1, 10, 100, 11, 12...
-
-¿En qué números coincide el orden numérico con el alfabético?
 
